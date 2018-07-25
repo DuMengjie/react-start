@@ -7,7 +7,7 @@ module.exports = {
   },
   'extends': [
     'airbnb',
-    'prettier',
+    "prettier",
   ],
   'plugins': [
     'prettier',
