@@ -34,22 +34,83 @@ react-start/
 
  `public/index.html`中只能引用`public`文件夹中的文件。
 
-## 可用指令
+## 代码目录
 
-### `npm start`
+```js
++-- build/                                  ---打包的文件目录
++-- config/                                 ---npm run eject 后的配置文件目录
++-- node_modules/                           ---npm下载文件目录
++-- public/                                 
+|   --- index.html						  ---首页入口html文件
+|   --- favicon.ico						  ---收藏夹图标
+|   --- manifest.json					  ---移动app的配置文件
++-- scripts/                                 
+|   --- build.js						  ---打包命令
+|   --- start.js						  ---运行命令
+|   --- test.js							  ---测试命令
++-- src/                                    ---核心代码目录
+|   +-- components                          ---各式各样的组件存放目录           
+|   +-- style                               ---项目的样式存放目录
+|   +-- utils                               ---工具文件存放目录
+|   --- App.js                              ---组件入口文件
+|   --- index.js                            ---项目的整体js入口文件
+--- .eslintrc.js                            ---自定义eslint配置文件
+--- .prettierrc                             ---自定义prettierrc配置文件
+--- .stylelintrc                            ---自定义stylelintrc配置文件
+--- package.json                                    
+```
 
-开发环境运行，端口号3000。
+## 安装运行
 
-### `npm test`
+##### 1.下载或克隆项目源码
 
-测试。
+##### 2.npm安装相关包文件(建议翻墙或增加淘宝镜像源，不然很慢)
 
-### `npm run build`
+```js
+npm i
+```
 
-打包。
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##### 3.启动项目
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```js
+npm start
+```
 
-See the section about [deployment](#deployment) for more information.
+##### 4.打包项目
+
+```js
+npm run build
+```
+## 安装ant-design
+
+```
+npm install antd --save
+```
+
+##### 按需加载
+
+使用babel-plugin-import
+
+```js
+// .babelrc or babel-loader option
+{
+  "plugins": [
+    ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }] // `style: true` 会加载 less 文件
+  ]
+}
+```
+
+然后只需从 antd 引入模块即可，无需单独引入样式。
+
+```js
+// babel-plugin-import 会帮助你加载 JS 和 CSS
+import { DatePicker } from 'antd';
+```
+
+## CSS预处理
+
+已配置`node-sass`，可使用sass，less请自行配制。
+
+## 代码风格
+
+配置Eslint和Prettify限制代码风格，前端代码规范参考http://wiki.internal.hyperchain.cn/plat:damaijia:workfolow:frontend-code。可以在编辑器中安装相应的插件来优化开发体验。
